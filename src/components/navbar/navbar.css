@@ -1,0 +1,29 @@
+.navbar {   
+    height: 170px;
+    width: 100vw;
+    color: #eaf5bff5;
+    background-color:#1a4621; 
+    align-items: center;
+    text-align: center;     
+}
+
+.contenedor-logo {
+    display: flex;
+    align-items: center;      
+}
+
+.contenedor-menu {
+    display: flex;
+    align-items: center;   
+}
+
+.contenedor-carrito {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+  

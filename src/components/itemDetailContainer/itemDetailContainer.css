@@ -1,0 +1,18 @@
+.itemDetailContainer {
+    display: flex;
+    flex-direction: column;   
+    height: 1000px;
+    width: 100vw;
+    background-color: #eaf5bff5;
+    color:#1a4621; 
+    align-items: center; 
+    padding: 20px 20px !important;   
+}
+
+.itemDetailContainer h1{
+   font-size: 1.5em;
+   margin-bottom: 15px !important;
+}
+
+
+  

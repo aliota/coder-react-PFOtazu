@@ -1,0 +1,14 @@
+.itemDetail {
+    display: flex;  
+    flex-direction: column; 
+    font-size: 1.5em;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    border:  2px solid #1a4621 !important;   
+    background-color: #eaf5bff5 !important;   
+    width: 400px !important;    
+    padding: 10px !important;
+        
+}
+

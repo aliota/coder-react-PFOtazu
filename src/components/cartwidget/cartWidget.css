@@ -1,0 +1,22 @@
+.aside{
+  display: flex;
+  justify-content: center;  
+}
+
+.carrito {
+  position: relative;   
+}
+
+.badge {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    background-color: #f0ed5f; 
+    color: #1a4621 !important; 
+    font-size: 1em !important;
+    padding: 2px 6px !important;
+    border-radius: 50%; 
+    transform: translate(55%, -55%);
+  }
+
+  
