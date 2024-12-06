@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from '../itemList/ItemList';
-import { collection, doc, getDocs } from 'firebase/firestore'; 
+import { collection, getDocs } from 'firebase/firestore'; 
 import { myDB } from '../../main';
 import "./itemListContainer.css"
 
@@ -24,7 +24,7 @@ function ItemListContainer({title}) {
             setItems(dataList);
           } 
       catch (error) { 
-            setError(error.message); 
+        setError(error.message);            
       } 
       finally { 
         setLoading(false); 
@@ -36,7 +36,7 @@ function ItemListContainer({title}) {
   useEffect(() => {           
     if(idCategory && data!=[]){
       const newItems = data.filter((producto)=> producto.category === idCategory );  
-      setItems(newItems); 
+      (newItems!= undefined) && setItems(newItems); 
     }else{       
       setItems(data); 
     }          
@@ -54,9 +54,8 @@ function ItemListContainer({title}) {
   if (error) {
     return (
       <div className="itemListContainer">
-       <h1>{title}</h1>     
-       <p>Error cargando productos: {error}</p>    
-    </div>   
+       <h1>Error cargando productos: {error}</h1>                
+      </div>   
     )
   }
 

@@ -1,37 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import fetchApi from '../../utils/api.js';
+import { doc, getDoc } from 'firebase/firestore'; 
+import { myDB } from '../../main';
 import ItemDetail from '../itemDetail/ItemDetail';
 import "./itemDetailContainer.css"
 
 
 
 function ItemDetailContainer () {
-    
+  
   const [item, setItem] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const { idItem } = useParams();
-  
- 
+
   useEffect(() => {
     setLoading(true);  
-    fetchApi().then(items=>{     
-               
-        if(idItem){
-            const newItem = items.find((elem)=> elem.id == idItem ); 
-            setItem(newItem);               
-          }else{       
-            setItem(items[0]);   
-          }     
+    const product = doc(myDB,"items",idItem);
+    getDoc(product).then((snapshot)=>{                
+        if(snapshot.exists()){           
+            setItem({id: snapshot.id, ...snapshot.data()});               
+          }  
         setLoading(false);     
     })
     .catch(()=>{
       setError(true);
     });    
    
-  }, [idItem]);
+  }, [idItem]); 
+ 
+  
 
   if (loading) {    
     return (
@@ -49,14 +48,11 @@ function ItemDetailContainer () {
     )
   }
 
-
     return (
-
-        <div className='itemDetailContainer'>   
-            <h1>{item.name}</h1>         
-            <ItemDetail  item = {item} />  
-        </div>
-        
+      <div className='itemDetailContainer'>   
+           <h1>{item.name}</h1>         
+           <ItemDetail  item = {item} /> 
+      </div>        
     )
 
 }

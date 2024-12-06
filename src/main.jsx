@@ -1,3 +1,4 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { initializeApp } from "firebase/app";
 import { getFirestore} from 'firebase/firestore';
@@ -18,9 +19,12 @@ const app = initializeApp(firebaseConfig);
 const myDB = getFirestore(app);
 export {myDB}
 
+//createRoot(document.getElementById('root')).render(<App/>);
 
-  createRoot(document.getElementById('root')).render(
-  <>
-    <App/>
-  </>,
-)
+const rootElement = document.getElementById('root');
+if (!rootElement._reactRootContainer) {  
+  createRoot(rootElement).render(<App />);
+} else {  
+   rootElement._reactRootContainer.render(<App />);
+}
+
