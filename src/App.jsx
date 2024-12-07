@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
