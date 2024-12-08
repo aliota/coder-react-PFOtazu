@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import "./Item.css"
+import "./item.css"
 
 function Item({product}) {
     const path =  "/item/"+product.id;
