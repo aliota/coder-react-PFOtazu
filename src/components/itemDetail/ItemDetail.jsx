@@ -28,10 +28,10 @@ function ItemDetail ({item}) {
                             <button type="button" className="btn btn-outline-success"  onClick={() => setCount((count) => count + 1)}>+</button>
                         </div>
                         <div className="col-4 btn-group" role="group" aria-label="Fourth group">
-                            <button type="button" className=" ms-5 btn btn-secondary">Agregar Carrito</button>
+                            <button type="button" className=" ms-5 btn btn-secondary">Agregar al carrito</button>
                         </div>
                         <div className="col-4 btn-group" role="group" aria-label="Fifth group">
-                            <button type="button" className=" ms-5 btn btn-primary">Ir al Carrito</button>
+                            <button type="button" className=" ms-5 btn btn-primary">Ir al carrito</button>
                         </div>
                     </div>
                 </div>                
