@@ -23,7 +23,7 @@ export {myDB}
 
 const rootElement = document.getElementById('root');
 if (!rootElement._reactRootContainer) {  
-  createRoot(rootElement).render(<App />);
+  createRoot(rootElement).render(<App/>);
 } else {  
    rootElement._reactRootContainer.render(<App />);
 }

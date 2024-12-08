@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./itemDetail.css"
-
+import React, { useContext } from 'react';
+import { CartCountContext } from '../../context/CartCountContext';
 
 
 
 function ItemDetail ({item}) {   
     const [count, setCount] = useState(0);
-
+    const { cartCount, setCartCount } = useContext(CartCountContext);
     return (
 
         <div key={item.id} className='itemDetail container'>   
@@ -28,7 +29,7 @@ function ItemDetail ({item}) {
                             <button type="button" className="btn btn-outline-success"  onClick={() => setCount((count) => count + 1)}>+</button>
                         </div>
                         <div className="col-4 btn-group" role="group" aria-label="Fourth group">
-                            <button type="button" className=" ms-5 btn btn-secondary">Agregar al carrito</button>
+                            <button type="button" className=" ms-5 btn btn-secondary" onClick={() => setCartCount((cartCount) => cartCount + count)}>Agregar al carrito</button>
                         </div>
                         <div className="col-4 btn-group" role="group" aria-label="Fifth group">
                             <button type="button" className=" ms-5 btn btn-primary">Ir al carrito</button>
