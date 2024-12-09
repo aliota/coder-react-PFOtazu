@@ -8,39 +8,33 @@ import "./itemListContainer.css"
 
 
 function ItemListContainer({title}) {
-
-  const [data, setData] = useState([]); 
+  
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const { idCategory } = useParams();  
 
-  useEffect(() => { 
-    const fetchData = async () => { 
-      try { const querySnapshot = await getDocs(collection( myDB, 'items',)); 
-            const dataList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); 
-            setData(dataList); 
-            setItems(dataList);
-          } 
-      catch (error) { 
-        setError(error.message);            
-      } 
-      finally { 
-        setLoading(false); 
-      } 
-    }; 
-    fetchData(); 
-  }, []); 
- 
-  useEffect(() => {           
-    if(idCategory && data!=[]){
-      const newItems = data.filter((producto)=> producto.category === idCategory );  
-      (newItems!= undefined) && setItems(newItems); 
-    }else{       
-      setItems(data); 
-    }          
+  useEffect(() => {
+    setLoading(true);  
+    getDocs(collection( myDB, 'items',)).then(querySnapshot=>{      
+      const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); 
+      if(idCategory){
+        const newItems = items.filter((producto)=> producto.category === idCategory );  
+        setItems(newItems); 
+      }else{       
+        setItems(items); 
+      }        
+      setLoading(false);     
+    })
+    .catch(()=>{
+      setLoading(false); 
+      setError(true);
+    });    
+   
   }, [idCategory]);
+
+
 
   if (loading) {    
     return (

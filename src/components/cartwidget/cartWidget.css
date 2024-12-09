@@ -4,7 +4,11 @@
 }
 
 .carrito {
-  position: relative;   
+  position: relative;  
+}
+
+.carrito a {  
+  color: #eaf5bff5 !important;
 }
 
 .badge {
