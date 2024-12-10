@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./itemDetail.css"
 import React, { useContext } from 'react';
 import { CartCountContext } from '../../context/CartCountContext';
@@ -7,7 +7,14 @@ import { CartCountContext } from '../../context/CartCountContext';
 
 function ItemDetail ({item}) {   
     const [count, setCount] = useState(1);
-    const {setCartCount } = useContext(CartCountContext);
+    const {setCartCount, cart, setCart } = useContext(CartCountContext);
+    const agregarCantidad = () => {
+        setCart(cart.map(elem => 
+        elem.id === item.id ? { ...elem, qty: elem.qty + count} : elem
+        ));      
+      };
+    
+
     return (
 
         <div key={item.id} className='itemDetail container'>   
@@ -29,7 +36,11 @@ function ItemDetail ({item}) {
                             <button type="button" className="btn btn-outline-success"  onClick={() => setCount((count) => count + 1)}>+</button>
                         </div>
                         <div className="col-4 btn-group" role="group" aria-label="Fourth group">
-                            <button id="AddItemButton" type="button" className=" ms-5 btn btn-secondary" onClick={() => setCartCount((cartCount) => cartCount + count)}>Agregar al carrito</button>
+                            <button id="AddItemButton" type="button" className=" ms-5 btn btn-secondary" onClick={() => 
+                                {   setCartCount((cartCount) => cartCount + count);
+                                    cart.find((elem) => elem.id === item.id) === undefined ? setCart([...cart, {id:item.id,qty:count}]): agregarCantidad();                                                                                                      
+                                }
+                                }>Agregar al carrito</button>
                         </div>                        
                     </div>
                 </div>                

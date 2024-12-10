@@ -1,6 +1,15 @@
+import "./checkout.css"
+import Brief from '../brief/Brief';
+import Comprador from "../comprador/Comprador";
+
 function Checkout(){
+    
     return(
-        <h1>Checkout</h1>
+        <div>
+            <h1>Checkout</h1>   
+            <Brief/>
+            <Comprador/>
+        </div>             
     )
 }
 
