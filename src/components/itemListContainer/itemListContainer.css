@@ -1,7 +1,6 @@
 .itemListContainer {
     display: flex;
-    flex-direction: column;
-    height: 1000px;
+    flex-direction: column;   
     width: 100vw;
     background-color: #eaf5bff5; 
     color:#1a4621; 
@@ -10,7 +9,7 @@
 }
 
 .itemListContainer h1{
-   font-size: 2em;
+   font-size: 1.5rem !important;
    margin-bottom: 20px;
 }
 
@@ -18,5 +17,4 @@
     display: flex;
     font-size: 1.5em;
 }
-
   

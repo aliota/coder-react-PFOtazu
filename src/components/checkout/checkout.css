@@ -1,0 +1,17 @@
+.checkout {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: #eaf5bff5; 
+    color:#1a4621; 
+    align-items: start; 
+    padding: 20px 50px !important;   
+}
+
+.checkout h1{
+   font-size: 2em;
+   margin-bottom: 20px !important;
+}
+
+
+  

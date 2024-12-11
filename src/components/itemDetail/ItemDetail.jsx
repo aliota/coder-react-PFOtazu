@@ -19,8 +19,8 @@ function ItemDetail ({item}) {
 
         <div key={item.id} className='itemDetail container'>   
             <div className="row">
-                <img src={item.image} alt={item.name} className=" col-4 img-fluid" />                 
-                <div className="col-8 align-content-center">
+                <img src={item.image} alt={item.name} className=" col-12 col-md-4 img-fluid" />                 
+                <div className="col-12 col-md-8 align-content-center">
                     <p className="row w-100 mb-1 text-center justify-content-center">Categoría: {item.category}</p>            
                     <p className="row w-100 mb-1 text-center justify-content-center">Ingredientes: {item.description}</p>      
                     <p className="row w-100 mb-5 text-center justify-content-center">Precio: $ {item.price}</p>   
@@ -38,7 +38,7 @@ function ItemDetail ({item}) {
                         <div className="col-4 btn-group" role="group" aria-label="Fourth group">
                             <button id="AddItemButton" type="button" className=" ms-5 btn btn-secondary" onClick={() => 
                                 {   setCartCount((cartCount) => cartCount + count);
-                                    cart.find((elem) => elem.id === item.id) === undefined ? setCart([...cart, {id:item.id,qty:count}]): agregarCantidad();                                                                                                      
+                                    cart.find((elem) => elem.id === item.id) === undefined ? setCart([...cart, {id:item.id,qty:count,name:item.name,price:item.price,image:item.image,}]): agregarCantidad();                                                                                                      
                                 }
                                 }>Agregar al carrito</button>
                         </div>                        
