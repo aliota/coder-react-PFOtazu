@@ -49,7 +49,8 @@ function Comprador(){
         )
     }
     
-    
+    const respaldo = null;
+
     return(
         <form onSubmit={handleSubmit}>
       <div>
@@ -89,11 +90,11 @@ function Comprador(){
         />
       </div>
       <div>
-        <label htmlFor="email">Repetir Email:</label>
+        <label htmlFor="respaldo">Repetir Email:</label>
         <input
           type="email"
-          id="email"
-          value={email}
+          id="respaldo"
+          value={respaldo}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
