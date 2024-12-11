@@ -13,5 +13,15 @@
    margin-bottom: 20px !important;
 }
 
+.btn-primary {
+    color:   #eaf5bff5 !important;    
+    background-color:  #1a4621 !important;  
+    border:  2px solid #1a4621 !important;         
+}
 
+.btn-secondary {
+    color:   #1a4621 !important;     
+    background-color: #eaf5bff5 !important;    
+    border:  2px solid #1a4621 !important;         
+}
   

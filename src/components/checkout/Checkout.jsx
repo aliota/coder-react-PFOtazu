@@ -5,12 +5,15 @@ import React, { useContext } from 'react';
 import { CartCountContext } from '../../context/CartCountContext';
 
 function Checkout(){
-    const {cartCount} = useContext(CartCountContext);
+    const {cartCount, setCartCount ,setCart} = useContext(CartCountContext);
     return(
         <div className="checkout">
             <h1>Resumen de la compra</h1>   
             {cartCount? <Brief/>: "Carrito vacío"}
-            {/* <Comprador/> */}
+            <div>
+                <button className=" mt-5 px-5 btn btn-secondary"  >Comprar</button>
+                <button className=" mt-5 ms-5 px-5 btn btn-secondary"  onClick={(() => {setCart([]); setCartCount(0)})}>Vaciar</button>
+            </div>              
         </div>             
     )
 }
