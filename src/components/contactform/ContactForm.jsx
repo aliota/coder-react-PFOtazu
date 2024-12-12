@@ -6,8 +6,10 @@ import { myDB } from '../../main';
 import { useContext } from 'react';
 import { CartCountContext } from '../../context/CartCountContext';
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 
 function ContactForm () {
+    const [ordenGenerada, setOrdenGenerada] = useState(false);
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [tel, setTel] = useState('');
@@ -52,7 +54,8 @@ function ContactForm () {
                   mostrarOrden(docRef);                  
                   setLoading(false);
                   vaciarCarrito(); 
-                  handleReset();
+                  handleReset();    
+                  setOrdenGenerada(true);              
             })
             .catch(()=>{
               setLoading(false); 
@@ -84,11 +87,21 @@ function ContactForm () {
         </div>   
         )
     }
+
+    if (ordenGenerada) {
+      return (
+      <div>
+        <h2>Compra finalizada con éxito!</h2>               
+      </div>   
+      )
+    }
     
     const respaldo = null;        
 
   return (
-    <Container>      
+    
+    <Container>     
+      <h2 className="mb-2">Completa los datos de contacto</h2> 
       <Form onSubmit={handleSubmit}>
 
         <Form.Group controlId="formNombre">
@@ -147,9 +160,11 @@ function ContactForm () {
           />
         </Form.Group>       
 
+        
         <Button variant="primary" type="submit" className='mt-3 px-3'>
           Enviar
         </Button>
+        
         <Button variant="primary" type="button" onClick={handleReset} className='mt-3 ms-3 px-3'>
           Vaciar formulario
         </Button>
