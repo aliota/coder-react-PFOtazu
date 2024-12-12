@@ -4,7 +4,7 @@
     width: 100vw;
     background-color: #eaf5bff5; 
     color:#1a4621; 
-    align-items: start; 
+    align-items: center !important; 
     padding: 20px 50px !important;   
 }
 
@@ -23,5 +23,4 @@
     color:   #1a4621 !important;     
     background-color: #eaf5bff5 !important;    
     border:  2px solid #1a4621 !important;         
-}
-  
+}  

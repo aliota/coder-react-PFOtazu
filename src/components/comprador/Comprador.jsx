@@ -50,7 +50,7 @@ function Comprador(){
     }
     
     const respaldo = null;
-
+    
     return(
         <form onSubmit={handleSubmit}>
       <div>

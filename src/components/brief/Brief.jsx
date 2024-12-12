@@ -13,7 +13,7 @@ function Brief(){
 
     return(
         <div>   
-            <ul className="container">                  
+            <ul className="container vw-100">                  
                 {cart.map((elem)=>(
                 <li key={elem.id} className="mb-3 row"> 
                     <div className="col-8">
