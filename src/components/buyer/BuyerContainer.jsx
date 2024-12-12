@@ -1,12 +1,11 @@
-import Comprador from "../comprador/Comprador";
 import ContactForm from "../contactform/ContactForm";
 import "./buyer.css"
 
 function BuyerContainer() {
     return (
-      <div className="buyer">
+      <div className="buyer ">
         <h1>Proceso de Compra</h1>
-        <h2>Completar los datos de contacto</h2>
+        <h2 className="mb-2">Completa los datos de contacto</h2>
         <ContactForm/>
       </div>
     )

@@ -15,7 +15,8 @@ function ContactForm () {
     const [repito, setRepito] = useState('');    
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const {cart } = useContext(CartCountContext);
+    const {cart,setCartCount ,setCart } = useContext(CartCountContext);
+    
     const mostrarOrden = (docRef) => { 
       Swal.fire({ 
         title: '¡Gracias por tu compra!', 
@@ -24,10 +25,23 @@ function ContactForm () {
       }); 
     };
 
+    const alertaEmailDistinto = () => { 
+      Swal.fire({ 
+        title: 'No coincide el email!', 
+        text: 'Por favor vuelve a ingresarlo ',         
+        confirmButtonText: 'Ok' 
+      }); 
+    };
+
+    const vaciarCarrito = () => { 
+      setCart([]); 
+      setCartCount(0);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();        
         if (email != repito) {
-          alert("no hay coincidencia en el mail");
+          alertaEmailDistinto();
         }else {         
           setLoading(true);   
           addDoc(collection(myDB , 'orders'), {
@@ -35,14 +49,24 @@ function ContactForm () {
               products: [...cart],
               status: "generada"
             }).then((docRef) => {
-                  mostrarOrden(docRef);
-                  setLoading(false); 
+                  mostrarOrden(docRef);                  
+                  setLoading(false);
+                  vaciarCarrito(); 
+                  handleReset();
             })
             .catch(()=>{
               setLoading(false); 
               setError(true);
             });   
         }         
+    };
+
+    const handleReset = () => { 
+      setNombre(''); 
+      setApellido(''); 
+      setTel(''); 
+      setEmail('');
+      setRepito('');
     };
 
     if (loading) {    
@@ -66,49 +90,56 @@ function ContactForm () {
   return (
     <Container>      
       <Form onSubmit={handleSubmit}>
+
         <Form.Group controlId="formNombre">
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label className='mb-1'>Nombre*</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Ingrese su nombre"
+            className='ps-2'
+            type="text"            
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            required
           />
         </Form.Group>
        
         <Form.Group controlId="formApellido">
-          <Form.Label>Apellido</Form.Label>
+          <Form.Label className='mb-1 mt-2'>Apellido*</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Ingrese su apellido"
+            className='ps-2'
+            type="text"            
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
+            required
           />
         </Form.Group>
 
         <Form.Group controlId="formTel">
-          <Form.Label>Teléfono</Form.Label>
+          <Form.Label className='mb-1 mt-2'>Teléfono*</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Ingrese su teléfono"
+            className='ps-2'
+            type="text"            
             value={tel}
             onChange={(e) => setTel(e.target.value)}
+            required
           />
         </Form.Group>
 
         <Form.Group controlId="formEmail">
-          <Form.Label>Email</Form.Label>
+          <Form.Label className='mb-1 mt-2'>Email*</Form.Label>
           <Form.Control
+            className='ps-2'
             type="email"
             placeholder="Ingrese su email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </Form.Group>
 
         <Form.Group controlId="formEmailRespaldo">
-          <Form.Label>Repita su Email</Form.Label>
+          <Form.Label className='mb-1 mt-2'>Repita su Email*</Form.Label>
           <Form.Control
+            className='ps-2'
             type="email"
             placeholder="Repita su email"
             value={repito}
@@ -116,9 +147,13 @@ function ContactForm () {
           />
         </Form.Group>       
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className='mt-3 px-3'>
           Enviar
         </Button>
+        <Button variant="primary" type="button" onClick={handleReset} className='mt-3 ms-3 px-3'>
+          Vaciar formulario
+        </Button>
+
       </Form>
     </Container>
   );
