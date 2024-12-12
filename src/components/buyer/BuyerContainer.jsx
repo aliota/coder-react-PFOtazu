@@ -1,7 +1,7 @@
 import Comprador from "../comprador/Comprador";
 import "./buyer.css"
 
-function Buyer() {
+function BuyerContainer() {
     return (
       <div className="buyer">
         <h1>Proceso de Compra</h1>
@@ -11,4 +11,4 @@ function Buyer() {
     )
   }
   
-  export default Buyer
+  export default BuyerContainer

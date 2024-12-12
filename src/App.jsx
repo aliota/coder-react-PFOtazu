@@ -2,7 +2,7 @@ import Navbar from './components/navbar/Navbar';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import Checkout from './components/checkout/Checkout';
-import Buyer from './components/buyer/Buyer';
+import BuyerContainer from './components/buyer/BuyerContainer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { CartCountProvider } from './context/CartCountContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,7 +21,7 @@ function App() {
             <Route path="*" element={<ItemListContainer title = "Página no encontrada" />}/>   
             <Route exact path="/item/:idItem" element={<ItemDetailContainer/>}/>  
             <Route exact path="/cart" element={<Checkout/>}/>      
-            <Route exact path="/buyer" element={<Buyer/>}/>     
+            <Route exact path="/buyer" element={<BuyerContainer/>}/>     
           </Routes> 
       </BrowserRouter>   
     </CartCountProvider>
